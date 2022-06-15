@@ -48,3 +48,11 @@ JOIN `courses` ON `courses`.`id` = `course_teacher`.`course_id`
 JOIN `degrees` ON `degrees`.`id` = `courses`.`degree_id` 
 JOIN `departments` ON `departments`.`id` = `degrees`.`department_id` 
 WHERE `departments`.`name` LIKE '%Dipartimento di Matematica'
+
+7.
+SELECT `students`.`name` AS `studente`, `courses`.`name` AS `nome_corso`, COUNT(`courses.name`) 
+FROM `students`
+JOIN `exam_student` ON `exam_student`.`student_id` = `students`.`id`
+JOIN `exams` ON `exam_student`.`exam_id` = `exams`.`id` 
+JOIN `courses` ON `exams`.`course_id` = `courses`.`id` 
+GROUP BY `nome_corso` , `studente`;
